@@ -5,17 +5,18 @@ import Login from './pages/auth/login';
 import Dashboard from './pages/dashboard/dashboard';
 import EmployeesList from './pages/employees/employeeslist';
 import EmployeeForm from './pages/employees/employeeform';
-import AircraftList from './pages/aircraft/aircraftlist';
-import AircraftDetails from './pages/aircraft/aircraftdetails';
-import AircraftForm from './pages/aircraft/aircraftform';
-import PartsList from './pages/parts/partslist';
-import PartDetails from './pages/parts/partdetails';
-import PartForm from './pages/parts/partform';
-import TestsList from './pages/tests/testslist';
-import TestForm from './pages/tests/testform';
+import AircraftList from './pages/aircraft/aircraftlist';  // ← minúsculo
+import AircraftDetails from './pages/aircraft/aircraftdetails';  // ← minúsculo
+import AircraftForm from './pages/aircraft/aircraftform';  // ← minúsculo
+import PartsList from './pages/parts/partslist';  // ← minúsculo (e corrigido)
+import PartDetails from './pages/parts/partsdetails';  // ← minúsculo
+import PartForm from './pages/parts/partsform';  // ← minúsculo
+import TestsList from './pages/tests/testlist';  // ← minúsculo
+import TestForm from './pages/tests/testform';  // ← minúsculo
 import StepsList from './pages/production/stepslist';
-import StepForm from './pages/production/stepform';
+import StepForm from './pages/production/stepsform';
 import ReportsList from './pages/reports/reportslist';
+
 import './styles/app.css';
 
 function App() {

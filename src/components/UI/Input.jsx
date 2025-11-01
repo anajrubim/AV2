@@ -1,3 +1,4 @@
+// src/components/UI/Input.jsx
 import React from 'react';
 
 const Input = ({ label, type = 'text', value, onChange, placeholder }) => {
@@ -15,4 +16,5 @@ const Input = ({ label, type = 'text', value, onChange, placeholder }) => {
   );
 };
 
-export default Input;
+// ⚠️ VERIFIQUE se está exportando corretamente:
+export default Input; // ← Deve ser assim

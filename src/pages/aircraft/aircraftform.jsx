@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Input from '../../components/UI/input';
-import Button from '../../components/UI/button';
+import Input from '../../components/UI/Input';
+import Button from '../../components/UI/Button';
 
 const AircraftForm = () => {
   const [formData, setFormData] = useState({

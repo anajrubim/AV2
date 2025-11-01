@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Button from '../../components/UI/button';
+import Button from '../../components/UI/Button';
 
 const PartDetails = () => {
   const { id } = useParams();
