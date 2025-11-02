@@ -1,66 +1,60 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import Button from '../../components/UI/Button';
+import '../../styles/aircraftdetails.css';
 
-const AircraftDetails = () => {
-  const { id } = useParams();
-
+const AircraftDetail = ({ onNavigate }) => {
   const aircraft = {
-    id: 1,
-    codigo: 'AC001',
-    modelo: 'EMB-110',
-    tipo: 'COMERCIAL',
-    capacidade: 8,
-    alcance: 2000
+    name: 'TAL AERONAVE',
+    codigo: 'ABC123'
   };
 
-  return (
-    <div className="page">
-      <header className="page-header">
-        <h1>{aircraft.modelo}</h1>
-        <p>Código: {aircraft.codigo}</p>
-      </header>
+  const menuItems = [
+    { label: 'Aeronaves', page: 7 },
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
+  ];
 
-      <div className="details-section">
-        <h2>Detalhes da Aeronave</h2>
-        <div className="details-grid">
-          <div className="detail-item">
-            <strong>Modelo:</strong> {aircraft.modelo}
-          </div>
-          <div className="detail-item">
-            <strong>Tipo:</strong> {aircraft.tipo}
-          </div>
-          <div className="detail-item">
-            <strong>Capacidade:</strong> {aircraft.capacidade} passageiros
-          </div>
-          <div className="detail-item">
-            <strong>Alcance:</strong> {aircraft.alcance} km
+  return (
+    <div className="aircraft-detail-container">
+      <div className="header">
+        <h1>Aerocode</h1>
+      </div>
+
+      <div className="content">
+        <div className="aircraft-info">
+          <h2>{aircraft.name}</h2>
+          <p>({aircraft.codigo})</p>
+        </div>
+
+        <div className="associated-items">
+          <h3>Pecas Associadas</h3>
+          <button className="btn-associado">Testes Associados</button>
+          <button className="btn-associado">Etapas Associadas</button>
+          <button className="btn-gerar-relatorio">Gerar Relatório</button>
+        </div>
+
+        <div className="menu-section">
+          <h3>Aeronaves</h3>
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
-      </div>
 
-      <div className="actions-section">
-        <Link to="/parts" className="btn btn-primary">
-          Peças Associadas
-        </Link>
-        <Link to="/tests" className="btn btn-primary">
-          Testes Associados
-        </Link>
-        <Link to="/production" className="btn btn-primary">
-          Etapas Associadas
-        </Link>
-        <Button variant="success">
-          Gerar Relatório
-        </Button>
-      </div>
-
-      <div className="page-actions">
-        <Link to="/aircraft" className="btn btn-secondary">
+        <button className="btn-voltar" onClick={() => onNavigate(7)}>
           Voltar
-        </Link>
+        </button>
       </div>
     </div>
   );
 };
 
-export default AircraftDetails;
+export default AircraftDetail;

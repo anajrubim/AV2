@@ -1,38 +1,62 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import '../../styles/partslist.css';
 
-const PartsList = () => {
-  const parts = [
-    { id: 1, nome: 'PEGA A', aeronave: 'EMB-110' },
-    { id: 2, nome: 'PEGA B', aeronave: 'EMB-110' },
-    { id: 3, nome: 'PEGA C', aeronave: 'EMB-120' },
+const PartsList = ({ onNavigate }) => {
+  const parts = ['PEGA A (tal aeronave)', 'PEGA D', 'PEGA B', 'PEGA E', 'PEGA C'];
+
+  const menuItems = [
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
   ];
 
   return (
-    <div className="page">
-      <header className="page-header">
-        <h1>Peças</h1>
-        <Link to="/parts/new" className="btn btn-primary">
-          CADASTRAR PEÇA
-        </Link>
-      </header>
-
-      <div className="cards-grid">
-        {parts.map(part => (
-          <div key={part.id} className="card">
-            <h3>{part.nome}</h3>
-            <p>Aeronave: {part.aeronave}</p>
-            <Link to={`/parts/${part.id}`} className="btn btn-secondary">
-              Ver Detalhes
-            </Link>
-          </div>
-        ))}
+    <div className="parts-container">
+      <div className="header">
+        <h1>Aerocode</h1>
       </div>
 
-      <div className="page-actions">
-        <Link to="/" className="btn btn-secondary">
+      <div className="content">
+        <div className="section">
+          <h2>Aeronaves</h2>
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="parts-section">
+          <h2>PEGA A (tal aeronave)</h2>
+          <div className="parts-list">
+            {parts.map((part, index) => (
+              <div key={index} className="part-item">
+                {part}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="action-buttons">
+          <button 
+            className="btn-cadastrar"
+            onClick={() => onNavigate(11)}
+          >
+            CADASTRAR PEGA
+          </button>
+          <button className="btn-cada">cada</button>
+        </div>
+
+        <button className="btn-voltar" onClick={() => onNavigate(7)}>
           Voltar
-        </Link>
+        </button>
       </div>
     </div>
   );

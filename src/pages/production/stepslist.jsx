@@ -1,42 +1,90 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../../components/UI/Button';
+import React, { useState } from 'react';
+import '../../styles/stepslist.css';
 
-const StepsList = () => {
-  const steps = [
-    { id: 1, nome: 'Etapa tal', aeronave: 'EMB-110', status: 'Iniciada' },
-    { id: 2, nome: 'Etapa tal', aeronave: 'EMB-110', status: 'Pendente' },
-    { id: 3, nome: 'Etapa tal', aeronave: 'EMB-120', status: 'Finalizada' },
+const StepsList = ({ onNavigate }) => {
+  const [steps, setSteps] = useState([
+    { id: 1, name: 'Etapa tal (tal aeronave)', status: 'iniciada' },
+    { id: 2, name: 'Etapa tal (tal aeronave)', status: 'pendente' },
+    { id: 3, name: 'Etapa tal (tal aeronave)', status: 'finalizada' },
+    { id: 4, name: 'Etapa tal (tal aeronave)', status: 'finalizada' },
+    { id: 5, name: 'Etapa tal (tal aeronave)', status: 'finalizada' }
+  ]);
+
+  const menuItems = [
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
   ];
 
-  return (
-    <div className="page">
-      <header className="page-header">
-        <h1>Etapas de Produção</h1>
-        <Link to="/production/new" className="btn btn-primary">
-          CRIAR ETAPA
-        </Link>
-      </header>
+  const handleStatusChange = (id, newStatus) => {
+    setSteps(steps.map(step => 
+      step.id === id ? { ...step, status: newStatus } : step
+    ));
+  };
 
-      <div className="cards-grid">
-        {steps.map(step => (
-          <div key={step.id} className="card">
-            <h3>{step.nome} ({step.aeronave})</h3>
-            <p>Status: {step.status}</p>
-            {step.status === 'Iniciada' && (
-              <Button variant="success">Finalizar</Button>
-            )}
-            {step.status === 'Pendente' && (
-              <Button variant="primary">Iniciar</Button>
-            )}
-          </div>
-        ))}
+  return (
+    <div className="steps-container">
+      <div className="header">
+        <h1>Aerocode</h1>
       </div>
 
-      <div className="page-actions">
-        <Link to="/" className="btn btn-secondary">
-          Voltar
-        </Link>
+      <div className="content">
+        <div className="section">
+          <h2>Aeronaves</h2>
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="steps-list">
+          {steps.map(step => (
+            <div key={step.id} className="step-item">
+              <h3>{step.name}</h3>
+              <div className="step-status">
+                {step.status === 'iniciada' && (
+                  <button 
+                    className="btn-finalizar"
+                    onClick={() => handleStatusChange(step.id, 'finalizada')}
+                  >
+                    Finalizar
+                  </button>
+                )}
+                {step.status === 'pendente' && (
+                  <button 
+                    className="btn-iniciar"
+                    onClick={() => handleStatusChange(step.id, 'iniciada')}
+                  >
+                    Iniciar
+                  </button>
+                )}
+                {step.status === 'finalizada' && (
+                  <span className="status-finalizada">finalizada</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="action-buttons">
+          <button 
+            className="btn-criar-etapa"
+            onClick={() => onNavigate(15)}
+          >
+            CRIAR ETAPA
+          </button>
+          <button className="btn-criar-etapa">
+            CRIAR ETAPA
+          </button>
+        </div>
       </div>
     </div>
   );

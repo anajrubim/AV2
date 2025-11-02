@@ -1,68 +1,91 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Input from '../../components/UI/Input';
-import Button from '../../components/UI/Button';
+import '../../styles/partsform.css';
 
-const PartForm = () => {
+const PartForm = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     nome: '',
     tipo: '',
     fornecedor: '',
     status: ''
   });
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Nova peça:', formData);
-    navigate('/parts');
+    console.log('Dados da peça:', formData);
+    onNavigate(10); 
   };
 
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  const menuItems = [
+    { label: 'Aeronaves', page: 7 },
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
+  ];
 
   return (
-    <div className="page">
-      <header className="page-header">
-        <h1>CADASTRAR PEÇA</h1>
-      </header>
+    <div className="part-form-container">
+      <div className="header">
+        <h1>Aerocode</h1>
+      </div>
 
-      <form onSubmit={handleSubmit} className="form">
-        <Input
-          label="Nome"
-          value={formData.nome}
-          onChange={(e) => handleChange('nome', e.target.value)}
-          placeholder="Digite o nome da peça"
-        />
-        <Input
-          label="Tipo"
-          value={formData.tipo}
-          onChange={(e) => handleChange('tipo', e.target.value)}
-          placeholder="NACIONAL ou IMPORTADA"
-        />
-        <Input
-          label="Fornecedor"
-          value={formData.fornecedor}
-          onChange={(e) => handleChange('fornecedor', e.target.value)}
-          placeholder="Digite o fornecedor"
-        />
-        <Input
-          label="Status"
-          value={formData.status}
-          onChange={(e) => handleChange('status', e.target.value)}
-          placeholder="Status da peça"
-        />
-
-        <div className="form-actions">
-          <Button type="submit" variant="primary">
-            CONCLUÍDO
-          </Button>
-          <Button type="button" variant="secondary" onClick={() => navigate('/parts')}>
-            Voltar
-          </Button>
+      <div className="content">
+        <div className="form-section">
+          <h2>CADASTRAR PEÇA</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <input 
+                type="text"
+                placeholder="Norme"
+                value={formData.nome}
+                onChange={(e) => setFormData({...formData, nome: e.target.value})}
+              />
+            </div>
+            <div className="form-group">
+              <input 
+                type="text"
+                placeholder="Tipo"
+                value={formData.tipo}
+                onChange={(e) => setFormData({...formData, tipo: e.target.value})}
+              />
+            </div>
+            <div className="form-group">
+              <input 
+                type="text"
+                placeholder="Fornecedor"
+                value={formData.fornecedor}
+                onChange={(e) => setFormData({...formData, fornecedor: e.target.value})}
+              />
+            </div>
+            <div className="form-group">
+              <input 
+                type="text"
+                placeholder="Status"
+                value={formData.status}
+                onChange={(e) => setFormData({...formData, status: e.target.value})}
+              />
+            </div>
+            <button type="submit" className="btn-concluido">
+              CONCLUÍDO
+            </button>
+          </form>
         </div>
-      </form>
+
+        <div className="menu-section">
+          <h3>Aeronaves</h3>
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

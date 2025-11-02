@@ -1,55 +1,49 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './components/layouts/layout';
+import React, { useState } from 'react';
 import Login from './pages/auth/login';
 import Dashboard from './pages/dashboard/dashboard';
-import EmployeesList from './pages/employees/employeeslist';
+import EmployeeList from './pages/employees/employeeslist';
 import EmployeeForm from './pages/employees/employeeform';
-import AircraftList from './pages/aircraft/aircraftlist';  // ← minúsculo
-import AircraftDetails from './pages/aircraft/aircraftdetails';  // ← minúsculo
-import AircraftForm from './pages/aircraft/aircraftform';  // ← minúsculo
-import PartsList from './pages/parts/partslist';  // ← minúsculo (e corrigido)
-import PartDetails from './pages/parts/partsdetails';  // ← minúsculo
-import PartForm from './pages/parts/partsform';  // ← minúsculo
-import TestsList from './pages/tests/testlist';  // ← minúsculo
-import TestForm from './pages/tests/testform';  // ← minúsculo
+import AircraftList from './pages/aircraft/aircraftlist';
+import AircraftDetail from './pages/aircraft/aircraftdetails';
+import PartsList from './pages/parts/partslist';
+import PartDetail from './pages/parts/partsdetails';
+import PartForm from './pages/parts/partsform';
+import TestsList from './pages/tests/testlist';
+import TestForm from './pages/tests/testform';
 import StepsList from './pages/production/stepslist';
 import StepForm from './pages/production/stepsform';
 import ReportsList from './pages/reports/reportslist';
-
 import './styles/app.css';
 
 function App() {
-  const isAuthenticated = true;
+  const [currentPage, setCurrentPage] = useState(1); // Começa na página de login
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 1: return <Login onNavigate={setCurrentPage} />;
+      case 2: return <Dashboard onNavigate={setCurrentPage} />;
+      case 3: return <EmployeeList onNavigate={setCurrentPage} />;
+      case 4: return <EmployeeList onNavigate={setCurrentPage} />; // Lista de funcionários
+      case 5: return <EmployeeForm onNavigate={setCurrentPage} />;
+      case 6: return <Dashboard onNavigate={setCurrentPage} />; // Volta pro dashboard
+      case 7: return <AircraftList onNavigate={setCurrentPage} />;
+      case 8: return <AircraftDetail onNavigate={setCurrentPage} />;
+      case 9: return <PartsList onNavigate={setCurrentPage} />;
+      case 10: return <PartDetail onNavigate={setCurrentPage} />;
+      case 11: return <PartForm onNavigate={setCurrentPage} />;
+      case 12: return <TestsList onNavigate={setCurrentPage} />;
+      case 13: return <TestForm onNavigate={setCurrentPage} />;
+      case 14: return <StepsList onNavigate={setCurrentPage} />;
+      case 15: return <StepForm onNavigate={setCurrentPage} />;
+      case 16: return <ReportsList onNavigate={setCurrentPage} />;
+      default: return <Login onNavigate={setCurrentPage} />;
+    }
+  };
 
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          {isAuthenticated ? (
-            <>
-              <Route path="/" element={<Layout><Dashboard /></Layout>} />
-              <Route path="/employees" element={<Layout><EmployeesList /></Layout>} />
-              <Route path="/employees/new" element={<Layout><EmployeeForm /></Layout>} />
-              <Route path="/aircraft" element={<Layout><AircraftList /></Layout>} />
-              <Route path="/aircraft/:id" element={<Layout><AircraftDetails /></Layout>} />
-              <Route path="/aircraft/new" element={<Layout><AircraftForm /></Layout>} />
-              <Route path="/parts" element={<Layout><PartsList /></Layout>} />
-              <Route path="/parts/:id" element={<Layout><PartDetails /></Layout>} />
-              <Route path="/parts/new" element={<Layout><PartForm /></Layout>} />
-              <Route path="/tests" element={<Layout><TestsList /></Layout>} />
-              <Route path="/tests/new" element={<Layout><TestForm /></Layout>} />
-              <Route path="/production" element={<Layout><StepsList /></Layout>} />
-              <Route path="/production/new" element={<Layout><StepForm /></Layout>} />
-              <Route path="/reports" element={<Layout><ReportsList /></Layout>} />
-            </>
-          ) : (
-            <Route path="*" element={<Navigate to="/login" />} />
-          )}
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      {renderPage()}
+    </div>
   );
 }
 

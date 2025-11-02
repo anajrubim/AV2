@@ -1,54 +1,81 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Input from '../../components/UI/Input';
-import Button from '../../components/UI/Button';
+import '../../styles/stepsform.css';
 
-const StepForm = () => {
+const StepForm = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     nome: '',
     responsavel: ''
   });
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Nova etapa:', formData);
-    navigate('/production');
+    console.log('Dados da etapa:', formData);
   };
 
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  const menuItems = [
+    { label: 'Aeronaves', page: 7 },
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
+  ];
 
   return (
-    <div className="page">
-      <header className="page-header">
-        <h1>CRIAR ETAPA</h1>
-      </header>
+    <div className="step-form-container">
+      <div className="header">
+        <h1>Aerocode</h1>
+      </div>
 
-      <form onSubmit={handleSubmit} className="form">
-        <Input
-          label="Nome"
-          value={formData.nome}
-          onChange={(e) => handleChange('nome', e.target.value)}
-          placeholder="Digite o nome da etapa"
-        />
-        <Input
-          label="Responsável"
-          value={formData.responsavel}
-          onChange={(e) => handleChange('responsavel', e.target.value)}
-          placeholder="Digite o responsável"
-        />
-
-        <div className="form-actions">
-          <Button type="submit" variant="primary">
-            CONCLUÍDO
-          </Button>
-          <Button type="button" variant="secondary" onClick={() => navigate('/production')}>
-            Voltar
-          </Button>
+      <div className="content">
+        <div className="form-section">
+          <h2>CRIAR ETAPA</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Norme:</label>
+              <input 
+                type="text"
+                value={formData.nome}
+                onChange={(e) => setFormData({...formData, nome: e.target.value})}
+              />
+            </div>
+            <div className="form-group">
+              <label>Responsável:</label>
+              <input 
+                type="text"
+                value={formData.responsavel}
+                onChange={(e) => setFormData({...formData, responsavel: e.target.value})}
+              />
+            </div>
+            <div className="form-buttons">
+              <button type="submit" className="btn-concluido">
+                CONCLUÍDO
+              </button>
+              <button type="button" className="btn-solir">
+                Solir
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+
+        <div className="menu-section">
+          <h3>Aeronaves</h3>
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button className="btn-voltar" onClick={() => onNavigate(14)}>
+          Voltar
+        </button>
+      </div>
     </div>
   );
 };

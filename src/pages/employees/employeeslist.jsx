@@ -1,33 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import '../../styles/employeelist.css';
 
-const EmployeesList = () => {
+const EmployeeList = ({ onNavigate }) => {
   const employees = [
-    { id: 1, name: 'Fulano da Silva', usuario: 'fulano123', cargo: 'operador' },
-    { id: 2, name: 'Ciclano Santos', usuario: 'ciclano456', cargo: 'engenheiro' },
+    { name: 'Fulano sia oq n sei oq', usuario: 'fulano123', cargo: 'operador' }
   ];
 
   return (
-    <div className="page">
-      <header className="page-header">
-        <h1>Funcionários</h1>
-        <Link to="/employees/new" className="btn btn-primary">
-          Cadastrar
-        </Link>
-      </header>
+    <div className="employee-container">
+      <div className="header">
+        <h1>Aerocode</h1>
+      </div>
 
-      <div className="table-container">
-        <table className="table">
+      <div className="content">
+        <table className="employee-table">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Usuário</th>
+              <th>Usuario</th>
               <th>Cargo</th>
             </tr>
           </thead>
           <tbody>
-            {employees.map(employee => (
-              <tr key={employee.id}>
+            {employees.map((employee, index) => (
+              <tr key={index}>
                 <td>{employee.name}</td>
                 <td>{employee.usuario}</td>
                 <td>{employee.cargo}</td>
@@ -35,15 +31,23 @@ const EmployeesList = () => {
             ))}
           </tbody>
         </table>
-      </div>
 
-      <div className="page-actions">
-        <Link to="/" className="btn btn-secondary">
+        <div className="action-buttons">
+          <button className="btn-listar">Listar</button>
+          <button 
+            className="btn-cadastrar"
+            onClick={() => onNavigate(5)}
+          >
+            Cadastrar
+          </button>
+        </div>
+
+        <button className="btn-voltar" onClick={() => onNavigate(2)}>
           Voltar
-        </Link>
+        </button>
       </div>
     </div>
   );
 };
 
-export default EmployeesList;
+export default EmployeeList;

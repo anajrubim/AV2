@@ -1,0 +1,79 @@
+.parts-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+}
+
+.parts-section {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 5px solid #667eea;
+}
+
+.parts-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.parts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.part-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  font-weight: bold;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.part-item:hover {
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin: 25px 0;
+  justify-content: center;
+}
+
+.btn-cadastrar,
+.btn-cada {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-cadastrar {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: 16px;
+}
+
+.btn-cada {
+  background: #6c757d;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-cadastrar:hover,
+.btn-cada:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}

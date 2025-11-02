@@ -1,54 +1,53 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Input from '../../components/UI/Input';
-import Button from '../../components/UI/Button';
+import '../../styles/login.css';
+import airplaneImg from '../../assets/airplane-outline.png'; 
 
-const Login = () => {
+const Login = ({ onNavigate }) => {
   const [formData, setFormData] = useState({
     usuario: '',
     senha: '',
     cargo: ''
   });
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Login attempt:', formData);
-    navigate('/');
-  };
-
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    if (onNavigate) onNavigate(2);
   };
 
   return (
     <div className="login-page">
-      <div className="login-container">
-        <h1>Aerocode</h1>
-        <form onSubmit={handleSubmit} className="login-form">
-          <Input
-            label="Usuário"
+      <div className="login-box">
+        <h1 className="login-title">Aerocode</h1>
+
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Usuário"
             value={formData.usuario}
-            onChange={(e) => handleChange('usuario', e.target.value)}
-            placeholder="Digite seu usuário"
+            onChange={(e) => setFormData({ ...formData, usuario: e.target.value })}
           />
-          <Input
-            label="Senha"
+          <input
             type="password"
+            placeholder="Senha"
             value={formData.senha}
-            onChange={(e) => handleChange('senha', e.target.value)}
-            placeholder="Digite sua senha"
+            onChange={(e) => setFormData({ ...formData, senha: e.target.value })}
           />
-          <Input
-            label="Cargo"
+          <select
             value={formData.cargo}
-            onChange={(e) => handleChange('cargo', e.target.value)}
-            placeholder="Digite seu cargo"
-          />
-          <Button type="submit" variant="primary">
-            Login
-          </Button>
+            onChange={(e) => setFormData({ ...formData, cargo: e.target.value })}
+          >
+            <option value="">Cargo</option>
+            <option value="operador">Operador</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="admin">Administrador</option>
+          </select>
+          <button type="submit" className="login-btn">Login</button>
         </form>
+      </div>
+
+      <div className="plane-image">
+        <img src={airplaneImg} alt="Avião" />
       </div>
     </div>
   );

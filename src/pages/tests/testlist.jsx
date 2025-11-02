@@ -1,35 +1,56 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import '../../styles/testslist.css';
 
-const TestsList = () => {
+const TestsList = ({ onNavigate }) => {
   const tests = [
-    { id: 1, nome: 'Teste tal', aeronave: 'EMB-110' },
-    { id: 2, nome: 'Teste tal', aeronave: 'EMB-110' },
-    { id: 3, nome: 'Teste tal', aeronave: 'EMB-120' },
+    'Teste tal (tal aeronave)',
+    'Teste tal',
+    'Teste tal', 
+    'Teste tal',
+    'Teste tal'
+  ];
+
+  const menuItems = [
+    { label: 'Aeronaves', page: 7 },
+    { label: 'Pecas', page: 9 },
+    { label: 'Testes', page: 12 },
+    { label: 'Etapas', page: 14 },
+    { label: 'Relatórios', page: 16 }
   ];
 
   return (
-    <div className="page">
-      <header className="page-header">
-        <h1>Testes</h1>
-        <Link to="/tests/new" className="btn btn-primary">
-          Registrar Teste
-        </Link>
-      </header>
-
-      <div className="cards-grid">
-        {tests.map(test => (
-          <div key={test.id} className="card">
-            <h3>{test.nome}</h3>
-            <p>Aeronave: {test.aeronave}</p>
-          </div>
-        ))}
+    <div className="tests-container">
+      <div className="header">
+        <h1>Aerocode</h1>
       </div>
 
-      <div className="page-actions">
-        <Link to="/" className="btn btn-secondary">
-          Voltar
-        </Link>
+      <div className="content">
+        <div className="menu-section">
+          <div className="menu-grid">
+            {menuItems.map((item, index) => (
+              <button 
+                key={index}
+                className="menu-btn"
+                onClick={() => onNavigate(item.page)}
+              >
+                {item.label}
+              </button>
+            ))}
+            <button className="btn-sair">Sair</button>
+          </div>
+        </div>
+
+        <div className="tests-list">
+          <button className="btn-voltar" onClick={() => onNavigate(7)}>
+            ← Voltar
+          </button>
+          
+          {tests.map((test, index) => (
+            <div key={index} className="test-item">
+              {test}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
