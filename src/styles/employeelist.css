@@ -1,87 +1,76 @@
-.employee-container {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  max-width: 800px;
-  width: 100%;
+.content-area {
+	flex: 1;
+	background-color: white !important;
+	padding: 0px 20px 30px 40px !important;
+	min-height: 100vh !important;
+}
+
+.table-actions {
+	display: flex !important;
+	justify-content: flex-end !important; 
+	gap: 15px !important; 
+	margin-bottom: 20px !important; 
+	width: auto !important;
+	height: auto !important;
+}
+
+.btn-cadastrar-emp,
+.btn-voltar-emp {
+	display: inline-block !important; 
+	padding: 10px 25px !important; 
+	font-size: 1em !important; 
+	font-weight: 500 !important; 
+	border: none !important; 
+	border-radius: 8px !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease !important;
+	color: white !important; 
+	min-width: 100px !important; 
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+.btn-cadastrar-emp {
+	background-color: black !important;
+}
+
+.btn-cadastrar-emp:hover {
+	background-color: #333 !important; 
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; 
+}
+
+.btn-voltar-emp {
+	background-color: #000 !important; 
+}
+
+.btn-voltar-emp:hover {
+	background-color: #444 !important;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 .employee-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  background: #f8f9fa;
-  border-radius: 10px;
-  overflow: hidden;
+	width: 100% !important;
+	border-collapse: collapse !important;
+	margin-top: 20px !important;
+	background: white !important; 
+	table-layout: fixed !important;
 }
 
-.employee-table th {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 15px;
-  text-align: left;
-  font-weight: bold;
-  text-transform: uppercase;
+.employee-table thead th {
+	background: none !important; 
+	color: #333 !important; 
+	padding: 0 0 5px 0 !important; 
+	text-align: left !important;
+	font-weight: 400 !important; 
+	text-transform: none !important; 
+	font-size: 1em !important;
 }
 
 .employee-table td {
-  padding: 15px;
-  border-bottom: 1px solid #dee2e6;
-  background: white;
-}
-
-.employee-table tr:last-child td {
-  border-bottom: none;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 15px;
-  margin: 25px 0;
-  justify-content: center;
-}
-
-.btn-listar,
-.btn-cadastrar {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.btn-listar {
-  background: #6c757d;
-  color: white;
-}
-
-.btn-cadastrar {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-}
-
-.btn-listar:hover,
-.btn-cadastrar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.btn-voltar {
-  background: #dc3545;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.btn-voltar:hover {
-  background: #c82333;
-  transform: translateY(-2px);
+	padding: 15px 0 !important; 
+	border-bottom: 1px solid #e0e0e0 !important;
+	background: white !important;
+	color: #333 !important;
+	font-size: 0.95em !important;
+	font-weight: 300 !important; 
 }

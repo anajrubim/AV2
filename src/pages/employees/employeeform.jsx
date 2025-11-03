@@ -1,71 +1,112 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Input from '../../components/UI/Input';
-import Button from '../../components/UI/Button';
+import '../../styles/employeeform.css';
 
-const EmployeeForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    usuario: '',
-    senha: '',
-    nivel: ''
-  });
-  const navigate = useNavigate();
+const EmployeeForm = ({ onNavigate }) => {
+	const [formData, setFormData] = useState({
+		name: '',
+		usuario: '',
+		senha: '',
+		nivel: ''
+	});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Novo funcionário:', formData);
-    navigate('/employees');
-  };
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('Dados do funcionário:', formData);
+		alert('Funcionário cadastrado com sucesso!');
+		onNavigate(4);
+	};
 
-  const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		const fieldName = name === 'cargo' ? 'nivel' : name;
+		setFormData(prevState => ({
+			...prevState,
+			[fieldName]: value
+		}));
+	};
 
-  return (
-    <div className="page">
-      <header className="page-header">
-        <h1>Cadastrar Funcionário</h1>
-      </header>
+	return (
+		<div className="employee-form-container">
+			<div className="header">
+				<h1>Aerocode</h1>
+			</div>
 
-      <form onSubmit={handleSubmit} className="form">
-        <Input
-          label="Name"
-          value={formData.name}
-          onChange={(e) => handleChange('name', e.target.value)}
-          placeholder="Digite o nome"
-        />
-        <Input
-          label="Usuário"
-          value={formData.usuario}
-          onChange={(e) => handleChange('usuario', e.target.value)}
-          placeholder="Digite o usuário"
-        />
-        <Input
-          label="Senha"
-          type="password"
-          value={formData.senha}
-          onChange={(e) => handleChange('senha', e.target.value)}
-          placeholder="Digite a senha"
-        />
-        <Input
-          label="Nível"
-          value={formData.nivel}
-          onChange={(e) => handleChange('nivel', e.target.value)}
-          placeholder="Digite o nível"
-        />
+			<div className="content">
+				<div className="form-section">
+					<h2>Cadastrar Funcionário</h2>
 
-        <div className="form-actions">
-          <Button type="submit" variant="primary">
-            CONCLUÍDO
-          </Button>
-          <Button type="button" variant="secondary" onClick={() => navigate('/employees')}>
-            Voltar
-          </Button>
-        </div>
-      </form>
-    </div>
-  );
+					<form onSubmit={handleSubmit} className="employee-form">
+						<div className="form-group-emp">
+							<input
+								type="text"
+								name="name"
+								placeholder="Name"
+								value={formData.name}
+								onChange={handleChange}
+								required
+							/>
+						</div>
+
+						<div className="form-group-emp">
+							<input
+								type="text"
+								name="usuario"
+								placeholder="Usuário"
+								value={formData.usuario}
+								onChange={handleChange}
+								required
+							/>
+						</div>
+
+						<div className="form-group-emp">
+							<input
+								type="password"
+								name="senha"
+								placeholder="Senha"
+								value={formData.senha}
+								onChange={handleChange}
+								required
+							/>
+						</div>
+
+						<div className="form-group-emp">
+							<select
+								name="cargo"
+								value={formData.nivel}
+								onChange={handleChange}
+								required
+							>
+								<option value="">Selecione o Cargo</option>
+								<option value="operador">Operador</option>
+								<option value="engenheiro">Engenheiro</option>
+								<option value="administrador">Administrador</option>
+							</select>
+						</div>
+
+						<div className="form-buttons-row">
+							<button
+								type="button"
+								className="btn-voltar-form"
+								onClick={() => onNavigate(2)}
+							>
+								Voltar
+							</button>
+							<button
+								type="button"
+								className="btn-listar"
+								onClick={() => onNavigate(4)}
+							>
+								Listar
+							</button>
+							<button type="submit" className="btn-cadastrar-form">
+								Cadastrar
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default EmployeeForm;

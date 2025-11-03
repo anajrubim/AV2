@@ -1,54 +1,97 @@
 .test-form-container {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  max-width: 600px;
-  width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: white;
+    border-radius: 8px; 
+    box-shadow: none;
 }
 
-.form-section {
-  margin-bottom: 30px;
-  padding: 25px;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border-left: 5px solid #667eea;
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: none;
 }
 
-.form-section h2 {
-  color: #333;
-  margin-bottom: 25px;
-  text-align: center;
-  font-size: 1.8em;
-  text-transform: uppercase;
+.page-header h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #737373;
+    margin: 0;
+    text-transform: uppercase;
 }
 
-.form-section .form-group {
-  margin-bottom: 20px;
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
-.form-section input {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
-  font-size: 16px;
-  background: white;
-  transition: all 0.3s ease;
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
 }
 
-.form-section input:focus {
-  border-color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+.input-label {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.menu-section {
-  margin: 25px 0;
+.input-field {
+    padding: 12px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 15px;
+    background: white;
+    color: #333;
+    transition: all 0.3s ease;
 }
 
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+.input-field:focus {
+    outline: none;
+    border-color: #333;
+    background: #f0f0f0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 150px;
+}
+
+.btn-test-concluido {
+    background: #000;
+    color: white;
+}
+
+.btn-test-concluido:hover {
+    background: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-test-voltar {
+    background: #555555;
+    color: white;
+    border: none;
+}
+
+.btn-test-voltar:hover {
+    background: #666666;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

@@ -2,92 +2,98 @@ import React, { useState } from 'react';
 import '../../styles/partsform.css';
 
 const PartForm = ({ onNavigate }) => {
-  const [formData, setFormData] = useState({
-    nome: '',
-    tipo: '',
-    fornecedor: '',
-    status: ''
-  });
+    const [formData, setFormData] = useState({
+        nome: '',
+        tipo: '',
+        fornecedor: '',
+        status: ''
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Dados da peça:', formData);
-    onNavigate(10); 
-  };
+    const tiposPeca = ['Nacional', 'Importada'];
+    const statusPeca = ['Em Produção', 'Em Transporte', 'Pronta'];
+    
+    const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData(prevData => ({
+			...prevData,
+			[name]: value
+		}));
+	};
 
-  const menuItems = [
-    { label: 'Aeronaves', page: 7 },
-    { label: 'Pecas', page: 9 },
-    { label: 'Testes', page: 12 },
-    { label: 'Etapas', page: 14 },
-    { label: 'Relatórios', page: 16 }
-  ];
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log('Dados da peça cadastrados:', formData);
+		onNavigate(10); 
+	};
 
-  return (
-    <div className="part-form-container">
-      <div className="header">
-        <h1>Aerocode</h1>
-      </div>
+    return (
+        <div className="part-form-container">
+            <div className="header">
+                <h1>Aerocode</h1>
+            </div>
 
-      <div className="content">
-        <div className="form-section">
-          <h2>CADASTRAR PEÇA</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Norme"
-                value={formData.nome}
-                onChange={(e) => setFormData({...formData, nome: e.target.value})}
-              />
+            <div className="content">
+                <div className="form-section-parts">
+                    <h2>CADASTRAR PEÇA</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group-parts">
+                            <input 
+                                type="text"
+                                placeholder="Nome"
+                                name="nome"
+                                value={formData.nome}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group-parts">
+                            <select
+                                name="tipo"
+                                value={formData.tipo}
+                                onChange={handleChange}
+                                className="dropdown-field"
+                            >
+                                <option value="" disabled>Selecione o Tipo</option>
+                                {tiposPeca.map((tipo) => (
+                                    <option key={tipo} value={tipo}>
+                                        {tipo}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="form-group-parts">
+                            <input 
+                                type="text"
+                                placeholder="Fornecedor"
+                                name="fornecedor"
+                                value={formData.fornecedor}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        
+                        <div className="form-group-parts">
+                            <select
+                                name="status"
+                                value={formData.status}
+                                onChange={handleChange}
+                                className="dropdown-field"
+                            >
+                                <option value="" disabled>Selecione o Status</option>
+                                {statusPeca.map((status) => (
+                                    <option key={status} value={status}>
+                                        {status}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        
+                        <button type="submit" className="btn-concluido-parts">
+                            CONCLUÍDO
+                        </button>
+                    </form>
+                </div>
             </div>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Tipo"
-                value={formData.tipo}
-                onChange={(e) => setFormData({...formData, tipo: e.target.value})}
-              />
-            </div>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Fornecedor"
-                value={formData.fornecedor}
-                onChange={(e) => setFormData({...formData, fornecedor: e.target.value})}
-              />
-            </div>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Status"
-                value={formData.status}
-                onChange={(e) => setFormData({...formData, status: e.target.value})}
-              />
-            </div>
-            <button type="submit" className="btn-concluido">
-              CONCLUÍDO
-            </button>
-          </form>
         </div>
-
-        <div className="menu-section">
-          <h3>Aeronaves</h3>
-          <div className="menu-grid">
-            {menuItems.map((item, index) => (
-              <button 
-                key={index}
-                className="menu-btn"
-                onClick={() => onNavigate(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default PartForm;

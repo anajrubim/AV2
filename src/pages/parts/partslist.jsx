@@ -2,64 +2,58 @@ import React from 'react';
 import '../../styles/partslist.css';
 
 const PartsList = ({ onNavigate }) => {
-  const parts = ['PEGA A (tal aeronave)', 'PEGA D', 'PEGA B', 'PEGA E', 'PEGA C'];
+	const parts = [
+		{ name: 'PEÇA A', id: 1 }, 
+		{ name: 'PEÇA D', id: 2 }, 
+		{ name: 'PEÇA B', id: 3 }, 
+		{ name: 'PEÇA E', id: 4 }, 
+		{ name: 'PEÇA C', id: 5 }
+	];
 
-  const menuItems = [
-    { label: 'Pecas', page: 9 },
-    { label: 'Testes', page: 12 },
-    { label: 'Etapas', page: 14 },
-    { label: 'Relatórios', page: 16 }
-  ];
+	const handleViewDetails = (partId) => {
+		console.log(`Ver detalhes da peça: ${partId}`);
+		onNavigate(10); 
+	};
 
-  return (
-    <div className="parts-container">
-      <div className="header">
-        <h1>Aerocode</h1>
-      </div>
+	return (
+		<div className="content-area">
+			
+			<div className="parts-header-actions">
+				<h2>PEÇAS CADASTRADAS</h2>
+			</div>
 
-      <div className="content">
-        <div className="section">
-          <h2>Aeronaves</h2>
-          <div className="menu-grid">
-            {menuItems.map((item, index) => (
-              <button 
-                key={index}
-                className="menu-btn"
-                onClick={() => onNavigate(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="parts-section">
-          <h2>PEGA A (tal aeronave)</h2>
-          <div className="parts-list">
-            {parts.map((part, index) => (
-              <div key={index} className="part-item">
-                {part}
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="action-buttons">
-          <button 
-            className="btn-cadastrar"
-            onClick={() => onNavigate(11)}
-          >
-            CADASTRAR PEGA
-          </button>
-          <button className="btn-cada">cada</button>
-        </div>
-
-        <button className="btn-voltar" onClick={() => onNavigate(7)}>
-          Voltar
-        </button>
-      </div>
-    </div>
-  );
+			<div className="parts-section">
+				<div className="parts-list">
+					{parts.map((part) => (
+						<div key={part.id} className="part-item">
+							<span className="part-name">{part.name}</span>
+							<button 
+								className="btn-ver-detalhes" 
+								onClick={() => handleViewDetails(part.id)}
+							>
+								Ver Detalhes
+							</button>
+						</div>
+					))}
+				</div>
+			</div>
+			
+			<div className="table-actions-bottom">
+				<button
+					className="btn-voltar-parts"
+					onClick={() => onNavigate(7)}
+				>
+					Voltar
+				</button>
+				<button
+					className="btn-cadastrar-parts"
+					onClick={() => onNavigate(11)}
+				>
+					CADASTRAR PEÇA
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default PartsList;

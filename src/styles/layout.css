@@ -1,0 +1,17 @@
+.layout {
+  min-height: 100vh;
+}
+
+.layout-content {
+  display: flex;
+  margin-top: 70px; 
+  background-color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px; 
+  padding: 30px;
+  background: #fff;
+  min-height: calc(100vh - 70px);
+}

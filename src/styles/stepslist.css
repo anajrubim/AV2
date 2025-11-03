@@ -1,103 +1,126 @@
+.section h2{
+	font-size: 1.8em;
+    font-weight: 300;
+	color: #737373;
+	text-transform: uppercase;
+}
 .steps-container {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  max-width: 800px;
-  width: 100%;
+	background: white;
+	border-radius: 8px;
+	box-shadow: none;
+	padding: 30px;
+	max-width: 800px;
+	width: 100%;
+    margin: 20px auto;
 }
 
 .steps-list {
-  margin: 30px 0;
+	margin: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .step-item {
-  background: white;
-  padding: 20px;
-  margin: 15px 0;
-  border-radius: 10px;
-  border: 2px solid #e9ecef;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s ease;
+	background: #fdfdfd;
+	padding: 20px;
+	margin: 0; 
+	border-radius: 8px;
+	border: 1px solid #e0e0e0;
+	display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
+	transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    cursor: pointer;
 }
 
 .step-item:hover {
-  border-color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	border-color: #333;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .step-item h3 {
-  color: #333;
-  font-size: 1.1em;
-  margin: 0;
+	color: #000;
+	font-size: 1.1em;
+	margin: 0 0 15px 0;
+    font-weight: 500;
 }
 
 .step-status {
-  display: flex;
-  gap: 10px;
+	display: flex;
+	gap: 10px;
+    margin-top: auto;
 }
 
 .btn-finalizar,
 .btn-iniciar {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  font-size: 12px;
+	padding: 8px 16px;
+	border: none;
+	border-radius: 6px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	font-size: 12px;
 }
 
 .btn-finalizar {
-  background: linear-gradient(135deg, #28a745, #20c997);
-  color: white;
+	background: #28a745;
+	color: white;
+}
+
+.btn-finalizar:hover {
+	background: #218838;
+	transform: scale(1.05);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-iniciar {
-  background: linear-gradient(135deg, #ffc107, #fd7e14);
-  color: white;
+	background: rgb(35, 140, 167);
+	color: white;
 }
 
-.btn-finalizar:hover,
 .btn-iniciar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+	background: rgb(29, 117, 139);
+	transform: scale(1.05);
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .status-finalizada {
-  color: #28a745;
-  font-weight: bold;
-  padding: 8px 16px;
-  background: #d4edda;
-  border-radius: 6px;
-  font-size: 12px;
-  text-transform: uppercase;
+	color: #28a745;
+	font-weight: bold;
+	padding: 8px 16px;
+	background: #e6f7eb;
+	border-radius: 6px;
+	font-size: 12px;
+	text-transform: uppercase;
 }
 
 .action-buttons {
-  display: flex;
-  gap: 15px;
-  margin: 30px 0;
-  justify-content: center;
+	display: flex;
+	gap: 15px;
+	margin: 30px 0;
+	justify-content: center;
 }
 
 .btn-criar-etapa {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+	background: #000;
+	color: white;
+	padding: 15px 25px;
+	border: none;
+	border-radius: 8px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+    font-size: 1em;
 }
 
 .btn-criar-etapa:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+	transform: translateY(-3px);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    background: #333;
 }

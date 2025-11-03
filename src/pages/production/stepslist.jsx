@@ -10,13 +10,6 @@ const StepsList = ({ onNavigate }) => {
     { id: 5, name: 'Etapa tal (tal aeronave)', status: 'finalizada' }
   ]);
 
-  const menuItems = [
-    { label: 'Pecas', page: 9 },
-    { label: 'Testes', page: 12 },
-    { label: 'Etapas', page: 14 },
-    { label: 'Relatórios', page: 16 }
-  ];
-
   const handleStatusChange = (id, newStatus) => {
     setSteps(steps.map(step => 
       step.id === id ? { ...step, status: newStatus } : step
@@ -25,24 +18,9 @@ const StepsList = ({ onNavigate }) => {
 
   return (
     <div className="steps-container">
-      <div className="header">
-        <h1>Aerocode</h1>
-      </div>
-
       <div className="content">
         <div className="section">
-          <h2>Aeronaves</h2>
-          <div className="menu-grid">
-            {menuItems.map((item, index) => (
-              <button 
-                key={index}
-                className="menu-btn"
-                onClick={() => onNavigate(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+          <h2>Etapas Cadastradas</h2>
         </div>
 
         <div className="steps-list">
@@ -79,9 +57,6 @@ const StepsList = ({ onNavigate }) => {
             className="btn-criar-etapa"
             onClick={() => onNavigate(15)}
           >
-            CRIAR ETAPA
-          </button>
-          <button className="btn-criar-etapa">
             CRIAR ETAPA
           </button>
         </div>

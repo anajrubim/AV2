@@ -1,72 +1,80 @@
-.aircraft-detail-container {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  max-width: 700px;
-  width: 100%;
-}
+
 
 .aircraft-info {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 20px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  border-radius: 12px;
-  color: white;
+	text-align: center;
+	margin-bottom: 30px;
+	padding: 0;
+	background: none; 
+	border-radius: 0; 
+	color: #333; 
 }
 
 .aircraft-info h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
+	font-size: 2.2em;
+	margin-bottom: 5px;
+    font-weight: bold;
+    color: #737373;
 }
 
 .aircraft-info p {
-  font-size: 1.2em;
-  opacity: 0.9;
+	font-size: 1.1em;
+	opacity: 1;
+    color: #555;
+    font-weight: 300;
 }
 
 .associated-items {
-  margin: 30px 0;
-  text-align: center;
+	margin: 30px 0;
+	text-align: center;
 }
 
 .associated-items h3 {
-  color: #333;
-  margin-bottom: 20px;
-  font-size: 1.5em;
+	color: #333;
+	margin-bottom: 20px;
+	font-size: 1.5em;
+    font-weight: 300;
+	text-transform: uppercase;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 .btn-associado,
 .btn-gerar-relatorio {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
+	display: block;
+	width: 100%;
+	padding: 15px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 8px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+    font-size: 1em;
 }
 
 .btn-associado {
-  background: #6c757d;
-  color: white;
+	background: #000;
+	color: white;
 }
 
 .btn-gerar-relatorio {
-  background: linear-gradient(135deg, #28a745, #20c997);
-  color: white;
+	background: #000;
+	color: white;
 }
 
-.btn-associado:hover,
+.btn-associado:hover {
+	background-color: #444;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .btn-gerar-relatorio:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	background: #444;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .menu-section {
-  margin: 30px 0;
+	margin: 30px 0;
 }

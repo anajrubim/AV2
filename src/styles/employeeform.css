@@ -1,0 +1,131 @@
+.employee-form-container .header {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.employee-form-container .header h1 {
+	font-size: 2.2em;
+	font-weight: bold;
+	color: #737373;
+	letter-spacing: 1px;
+}
+
+.form-section {
+	margin-bottom: 30px;
+}
+
+.form-section h2 {
+	color: #737373;
+	text-align: center;
+	margin-bottom: 25px;
+	font-size: 1.6em;
+	text-transform: uppercase;
+	padding-bottom: 8px;
+}
+
+.employee-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.form-group-emp {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-group-emp input,
+.form-group-emp select {
+	padding: 12px;
+	border: 2px solid #333;
+	border-radius: 8px;
+	font-size: 15px;
+	color: #737373;
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+.form-group-emp input:focus,
+.form-group-emp select:focus {
+	outline: none;
+	box-shadow: 0 0 10px #f0f0f0;
+	background: #f0f0f0;
+}
+
+.form-group-emp input::placeholder {
+	color: #aaa;
+}
+
+.form-buttons-row {
+	display: flex;
+	gap: 15px;
+	margin-top: 30px;
+}
+
+.form-buttons-emp {
+	display: flex;
+	justify-content: flex-end;
+	gap: 15px;
+	margin-top: 30px;
+}
+
+.btn-cadastrar-form,
+.btn-listar,
+.btn-voltar-form {
+	padding: 12px 24px;
+	border: none;
+	border-radius: 8px;
+	font-size: 1em; 
+	font-weight: 500; 
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.btn-cadastrar-form {
+	background-color: #000;
+	color: #fff;
+}
+
+.btn-cadastrar-form:hover {
+	background-color: #444;
+	transform: translateY(-2px);
+}
+
+.btn-listar {
+	background-color: #000;
+	color: #fff;
+}
+
+.btn-listar:hover {
+	background-color: #444;
+	transform: translateY(-2px);
+}
+
+.btn-voltar-form {
+	background-color: #000;
+	color: #fff;
+}
+
+.btn-voltar-form:hover {
+	background-color: #444;
+	color: #fff;
+	transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+	.form-buttons-row {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.form-buttons-emp {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.btn-cadastrar-form,
+	.btn-listar,
+	.btn-voltar-form {
+		width: 100%;
+	}
+}

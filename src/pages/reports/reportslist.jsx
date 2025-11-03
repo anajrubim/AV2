@@ -2,69 +2,67 @@ import React from 'react';
 import '../../styles/reportslist.css';
 
 const ReportsList = ({ onNavigate }) => {
-  const reports = [
-    { id: 1, date: '25/04', action: 'download' },
-    { id: 2, date: '25/04', action: 'iniciar' },
-    { id: 3, date: '25/04', action: 'outcome' },
-    { id: 4, date: '25/04', action: 'RELATÓRIO' },
-    { id: 5, date: '25/04', action: 'RELATÓRIO' }
-  ];
+    const reports = [
+        { id: 1, date: '25/04', action: 'download' },
+        { id: 2, date: '25/04', action: 'download' },
+        { id: 3, date: '25/04', action: 'download' },
+        { id: 4, date: '25/04', action: 'download' },
+        { id: 5, date: '25/04', action: 'download' }
+    ];
 
-  const menuItems = [
-    { label: 'Aeronaves', page: 7 },
-    { label: 'Pecas', page: 9 },
-    { label: 'Testes', page: 12 },
-    { label: 'Etapas', page: 14 },
-    { label: 'Relatórios', page: 16 }
-  ];
+    const handleReportAction = (action, reportId) => {
+        console.log(`Ação: ${action} no relatório ${reportId}`);
+    };
 
-  const handleReportAction = (action, reportId) => {
-    console.log(`Ação: ${action} no relatório ${reportId}`);
-  };
+    const getButtonText = (action) => {
+        return action.toUpperCase();
+    };
 
-  return (
-    <div className="reports-container">
-      <div className="header">
-        <h1>Aerocode</h1>
-      </div>
+    const handleGenerateReport = () => {
+        onNavigate(16); 
+    };
 
-      <div className="content">
-        <div className="reports-grid">
-          {reports.map(report => (
-            <div key={report.id} className="report-card">
-              <h3>Relatório</h3>
-              <p>{report.date}</p>
-              <button 
-                className={`btn-action btn-${report.action}`}
-                onClick={() => handleReportAction(report.action, report.id)}
-              >
-                {report.action}
-              </button>
+    return (
+        <div className="reports-container">
+            <header className="page-header">
+                <h1>RELATÓRIOS GERADOS</h1>
+            </header>
+
+            <div className="content">
+                <div className="reports-grid">
+                    {reports.map(report => (
+                        <div key={report.id} className="report-card">
+                            <h3>Relatório de Teste #{report.id}</h3>
+                            <p>Data: {report.date}</p>
+                            
+                            <button 
+                                className={`btn-action btn-${report.action.toLowerCase()}`}
+                                onClick={() => handleReportAction(report.action, report.id)}
+                            >
+                                {getButtonText(report.action)}
+                            </button>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="tests-actions-bottom">
+                    <button 
+                        className="btn-voltar-list" 
+                        onClick={() => onNavigate(7)}
+                    >
+                        VOLTAR
+                    </button>
+                    
+                    <button 
+                        className="btn-menu-action btn-generate-report" 
+                        onClick={handleGenerateReport}
+                    >
+                        GERAR RELATÓRIO
+                    </button>
+                </div>
             </div>
-          ))}
         </div>
-
-        <div className="menu-section">
-          <h3>Aeronaves</h3>
-          <div className="menu-grid">
-            {menuItems.map((item, index) => (
-              <button 
-                key={index}
-                className="menu-btn"
-                onClick={() => onNavigate(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <button className="btn-voltar" onClick={() => onNavigate(7)}>
-          Voltar
-        </button>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default ReportsList;

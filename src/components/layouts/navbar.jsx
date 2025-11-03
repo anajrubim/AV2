@@ -1,16 +1,18 @@
 import React from 'react';
+import '../../styles/navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onNavigate, currentPage }) => {
   return (
-    <nav className="navbar">
+    <div className="navbar">
       <div className="navbar-brand">
         <h1>Aerocode</h1>
       </div>
-      <div className="navbar-user">
-        <span>Usuário</span>
-        <button className="logout-btn">Sair</button>
+      <div className="navbar-actions">
+        <button className="btn-sair" onClick={() => onNavigate(1)}>
+          Sair
+        </button>
       </div>
-    </nav>
+    </div>
   );
 };
 

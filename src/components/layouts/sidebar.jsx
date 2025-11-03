@@ -1,33 +1,31 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import '../../styles/sidebar.css';
 
-const Sidebar = () => {
-  const location = useLocation();
-
+const Sidebar = ({ onNavigate, currentPage }) => {
   const menuItems = [
-    { path: '/', label: 'Aeronaves', icon: '✈️' },
-    { path: '/parts', label: 'Peças', icon: '🔧' },
-    { path: '/tests', label: 'Testes', icon: '🧪' },
-    { path: '/production', label: 'Etapas', icon: '📋' },
-    { path: '/reports', label: 'Relatórios', icon: '📊' },
-    { path: '/employees', label: 'Funcionários', icon: '👥' },
+    { id: 'funcionarios', label: 'Funcionários', page: 3},
+    { id: 'aeronaves', label: 'Aeronaves', page: 7 },
+    { id: 'pecas', label: 'Peças', page: 9},
+    { id: 'testes', label: 'Testes', page: 12},
+    { id: 'etapas', label: 'Etapas', page: 14},
+    { id: 'relatorios', label: 'Relatórios', page: 16}
   ];
 
   return (
-    <aside className="sidebar">
-      <nav className="sidebar-nav">
+    <div className="sidebar">
+      <nav className="sidebar-menu">
         {menuItems.map(item => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={`sidebar-item ${location.pathname === item.path ? 'active' : ''}`}
+          <button
+            key={item.id}
+            className={`menu-item ${currentPage === item.page ? 'active' : ''}`}
+            onClick={() => onNavigate(item.page)}
           >
-            <span className="icon">{item.icon}</span>
-            <span className="label">{item.label}</span>
-          </Link>
+            <span className="menu-icon">{item.icon}</span>
+            <span className="menu-label">{item.label}</span>
+          </button>
         ))}
       </nav>
-    </aside>
+    </div>
   );
 };
 

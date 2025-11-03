@@ -1,86 +1,75 @@
 import React, { useState } from 'react';
+import Input from '../../components/UI/Input';
+import Button from '../../components/UI/Button';
 import '../../styles/testform.css';
 
 const TestForm = ({ onNavigate }) => {
-  const [formData, setFormData] = useState({
-    numeroAeronave: '',
-    tipo: '',
-    resultado: ''
-  });
+    const [formData, setFormData] = useState({
+        numeroAeronave: '',
+        tipo: '',
+        resultado: ''
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Dados do teste:', formData);
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Dados do teste:', formData);
+        onNavigate(13); 
+    };
 
-  const menuItems = [
-    { label: 'Aeronaves', page: 7 },
-    { label: 'Pecas', page: 9 },
-    { label: 'Testes', page: 12 },
-    { label: 'Etapas', page: 14 },
-    { label: 'Relatórios', page: 16 }
-  ];
+    const handleChange = (field, value) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+    };
 
-  return (
-    <div className="test-form-container">
-      <div className="header">
-        <h1>Aerocode</h1>
-      </div>
+    return (
+        <div className="test-form-container">
+            <header className="page-header">
+                <h1>REGISTRAR TESTE</h1>
+            </header>
 
-      <div className="content">
-        <div className="form-section">
-          <h2>REGISTRAR TESTE</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Número da aeronave"
-                value={formData.numeroAeronave}
-                onChange={(e) => setFormData({...formData, numeroAeronave: e.target.value})}
-              />
-            </div>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Tipo"
-                value={formData.tipo}
-                onChange={(e) => setFormData({...formData, tipo: e.target.value})}
-              />
-            </div>
-            <div className="form-group">
-              <input 
-                type="text"
-                placeholder="Resultado"
-                value={formData.resultado}
-                onChange={(e) => setFormData({...formData, resultado: e.target.value})}
-              />
-            </div>
-            <button type="submit" className="btn-concluido">
-              CONCLUÍDO
-            </button>
-          </form>
+            <form onSubmit={handleSubmit} className="form">
+                
+                <Input
+                    label="Número da Aeronave"
+                    value={formData.numeroAeronave}
+                    onChange={(e) => handleChange('numeroAeronave', e.target.value)}
+                    placeholder="Código da aeronave testada"
+                />
+                
+                <Input
+                    label="Tipo de Teste"
+                    value={formData.tipo}
+                    onChange={(e) => handleChange('tipo', e.target.value)}
+                    placeholder="Voo, Pouso, Inspeção, etc."
+                />
+                
+                <Input
+                    label="Resultado do Teste"
+                    value={formData.resultado}
+                    onChange={(e) => handleChange('resultado', e.target.value)}
+                    placeholder="APROVADO ou REPROVADO"
+                />
+                
+                <div className="form-actions">
+                    <Button 
+                        type="button" 
+                        variant="secondary"
+                        className="btn-test-voltar"
+                        onClick={() => onNavigate(12)}
+                    >
+                        VOLTAR
+                    </Button>
+                    <Button 
+                        type="submit" 
+                        variant="primary"
+                        className="btn-test-concluido"
+                         onClick={() => onNavigate(12)}
+                    >
+                        Cadastrar
+                    </Button>
+                </div>
+            </form>
         </div>
-
-        <div className="menu-section">
-          <div className="menu-grid">
-            {menuItems.map((item, index) => (
-              <button 
-                key={index}
-                className="menu-btn"
-                onClick={() => onNavigate(item.page)}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <button className="btn-voltar" onClick={() => onNavigate(12)}>
-          ← Voltar
-        </button>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default TestForm;
