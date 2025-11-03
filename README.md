@@ -57,7 +57,9 @@ Interface para um sistema especializado no desenvolvimento de software para gest
 - npm run dev
 
 <br>
+<hr>
 
 Desenvolvido por Ana Júlia Rubim 
 
 Github: anajrubim
+
