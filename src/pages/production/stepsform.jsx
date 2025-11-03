@@ -22,7 +22,7 @@ const StepForm = ({ onNavigate }) => {
     return (
         <div className="step-form-container">
             <header className="page-header">
-                <h1>CRIAR ETAPA</h1>
+                <h1>Criar Etapa</h1>
             </header>
 
             <form onSubmit={handleSubmit} className="form">
@@ -48,14 +48,14 @@ const StepForm = ({ onNavigate }) => {
                         className="btn-step-voltar"
                         onClick={() => onNavigate(14)}
                     >
-                        VOLTAR
+                        Voltar
                     </Button>
                     <Button 
                         type="submit" 
                         variant="primary"
                         className="btn-step-cadastrar"
                     >
-                        CADASTRAR
+                        Cadastrar
                     </Button>
                 </div>
             </form>

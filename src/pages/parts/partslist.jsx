@@ -41,7 +41,7 @@ const PartsList = ({ onNavigate }) => {
 			<div className="table-actions-bottom">
 				<button
 					className="btn-voltar-parts"
-					onClick={() => onNavigate(7)}
+					onClick={() => onNavigate(2)}
 				>
 					Voltar
 				</button>
@@ -49,7 +49,7 @@ const PartsList = ({ onNavigate }) => {
 					className="btn-cadastrar-parts"
 					onClick={() => onNavigate(11)}
 				>
-					CADASTRAR PEÇA
+					Cadastrar Peça
 				</button>
 			</div>
 		</div>

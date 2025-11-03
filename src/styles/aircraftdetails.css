@@ -33,7 +33,6 @@
 	margin-bottom: 20px;
 	font-size: 1.5em;
     font-weight: 300;
-	text-transform: uppercase;
 	padding-bottom: 5px;
 	border-bottom: 1px solid #e0e0e0;
 }
@@ -49,7 +48,6 @@
 	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	text-transform: uppercase;
     font-size: 1em;
 }
 

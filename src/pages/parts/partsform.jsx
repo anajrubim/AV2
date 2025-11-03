@@ -87,7 +87,7 @@ const PartForm = ({ onNavigate }) => {
                         </div>
                         
                         <button type="submit" className="btn-concluido-parts">
-                            CONCLUÍDO
+                            Concluído
                         </button>
                     </form>
                 </div>

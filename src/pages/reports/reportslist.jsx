@@ -3,11 +3,11 @@ import '../../styles/reportslist.css';
 
 const ReportsList = ({ onNavigate }) => {
     const reports = [
-        { id: 1, date: '25/04', action: 'download' },
-        { id: 2, date: '25/04', action: 'download' },
-        { id: 3, date: '25/04', action: 'download' },
-        { id: 4, date: '25/04', action: 'download' },
-        { id: 5, date: '25/04', action: 'download' }
+        { id: 1, date: '25/04', action: 'Download' },
+        { id: 2, date: '25/04', action: 'Download' },
+        { id: 3, date: '25/04', action: 'Download' },
+        { id: 4, date: '25/04', action: 'Download' },
+        { id: 5, date: '25/04', action: 'Download' }
     ];
 
     const handleReportAction = (action, reportId) => {
@@ -15,7 +15,7 @@ const ReportsList = ({ onNavigate }) => {
     };
 
     const getButtonText = (action) => {
-        return action.toUpperCase();
+        return action; 
     };
 
     const handleGenerateReport = () => {
@@ -25,7 +25,7 @@ const ReportsList = ({ onNavigate }) => {
     return (
         <div className="reports-container">
             <header className="page-header">
-                <h1>RELATÓRIOS GERADOS</h1>
+                <h1>Relatórios Gerados</h1>
             </header>
 
             <div className="content">
@@ -48,16 +48,16 @@ const ReportsList = ({ onNavigate }) => {
                 <div className="tests-actions-bottom">
                     <button 
                         className="btn-voltar-list" 
-                        onClick={() => onNavigate(7)}
+                        onClick={() => onNavigate(2)}
                     >
-                        VOLTAR
+                        Voltar
                     </button>
                     
                     <button 
                         className="btn-menu-action btn-generate-report" 
                         onClick={handleGenerateReport}
                     >
-                        GERAR RELATÓRIO
+                        Gerar Relatório
                     </button>
                 </div>
             </div>

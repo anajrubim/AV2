@@ -25,21 +25,28 @@ const AircraftList = ({ onNavigate }) => {
                     {aircrafts.map(aircraft => (
                         <div key={aircraft.id} className="aircraft-card">
                             <h3>{aircraft.name}</h3>
+
                             <button 
                                 className="btn-ver-mais"
                                 onClick={() => onNavigate(8)}
                             >
-                                VER MAIS
+                                Ver Mais
                             </button>
                         </div>
                     ))}
                 </div>
                 <div className="aircraft-actions-bottom">
+                <button 
+                        className="btn-voltar-list" 
+                        onClick={() => onNavigate(2)}
+                    >
+                        Voltar
+                    </button>
                     <button 
                         className="btn-cadastrar"
                         onClick={handleCadastroClick}
                     >
-                        CADASTRAR AERONAVE
+                        Cadastrar Aeronave
                     </button>
                 </div>
             </div>

@@ -84,7 +84,6 @@
 	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	text-transform: uppercase;
 	color: white;
 	font-size: 0.9em;
 	background: #000;
@@ -116,7 +115,6 @@
 	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	text-transform: uppercase;
 	color: white;
 	font-size: 1em;
 	min-width: 120px;

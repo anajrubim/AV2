@@ -33,15 +33,15 @@ const TestsList = ({ onNavigate }) => {
                 <div className="tests-actions-bottom">
                     <button 
                         className="btn-voltar-list" 
-                        onClick={() => onNavigate(7)}
+                        onClick={() => onNavigate(2)}
                     >
-                        VOLTAR
+                        Voltar
                     </button>
                     <button 
                         className="btn-menu-action" 
                         onClick={() => onNavigate(13)}
                     >
-                        CADASTRAR TESTE
+                        Cadastrar Teste
                     </button>
                 </div>
 

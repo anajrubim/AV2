@@ -45,7 +45,7 @@ const StepsList = ({ onNavigate }) => {
                   </button>
                 )}
                 {step.status === 'finalizada' && (
-                  <span className="status-finalizada">finalizada</span>
+                  <span className="status-finalizada">Finalizada</span>
                 )}
               </div>
             </div>
@@ -53,11 +53,17 @@ const StepsList = ({ onNavigate }) => {
         </div>
 
         <div className="action-buttons">
+        <button 
+          className="btn-voltar-list" 
+            onClick={() => onNavigate(2)}
+        >
+            Voltar
+        </button>
           <button 
             className="btn-criar-etapa"
             onClick={() => onNavigate(15)}
           >
-            CRIAR ETAPA
+            Criar Etapa
           </button>
         </div>
       </div>

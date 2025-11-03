@@ -76,7 +76,7 @@ const AircraftForm = ({ onNavigate }) => {
                         variant="primary" 
                         className="btn-aircraft-cadastrar"
                     >
-                        CADASTRAR
+                        Cadastrar
                     </Button>
 
                 </div>
