@@ -17,9 +17,18 @@ const AircraftDetail = ({ onNavigate }) => {
         </div>
 
         <div className="associated-items">
-          <button className="btn-associado">Peças Associadas</button>
-          <button className="btn-associado">Testes Associados</button>
-          <button className="btn-associado">Etapas Associadas</button>
+          <button className="btn-associado"
+            onClick={() => onNavigate(9)}>
+            Peças Associadas
+          </button>
+          <button className="btn-associado"
+            onClick={() => onNavigate(12)}>
+              Testes Associados
+            </button>
+          <button className="btn-associado"
+            onClick={() => onNavigate(14)}>
+              Etapas Associadas
+            </button>
           <button className="btn-gerar-relatorio">Gerar Relatório</button>
         </div>
 
